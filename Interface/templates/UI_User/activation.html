@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="activation" class="container">
+
+    <div class="row mt-3 justify-content-center">
+        <div class="col-auto">
+            <img src="{{ url_for('static', filename='img/activation_pending.png') }}" alt="Activation Pending">
+        </div>
+        <div class="col-auto">
+            <h1>La cuenta está pendiente de Activación</h1>
+            <p><i>Por favor, compruebe su bandeja de entrada.</i></p>
+            <form class="form-inline mt-3 mb-2" method="POST">
+                <div class="form-group mr-2 mb-2">
+                    <label class="mr-1" for="input_email">Email</label>
+                    <input name="email" type="email" class="form-control" id="input_Email">
+                </div>
+                <button name="resend_button" type="submit" class="btn btn-primary mb-2">Reenviar enlace de
+                    activación</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

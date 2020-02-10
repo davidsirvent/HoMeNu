@@ -1,0 +1,5 @@
+graft Interface/static
+graft Interface/templates
+graft Database/SQL
+prune instance
+global-exclude *.pyc

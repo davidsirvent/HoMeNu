@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="dish-card" class="container">
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-10 col-lg-5 card-title">
+            Ficha de Plato
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10 col-lg-5 card-body">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Código</label>
+                    <input name="code" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input name="name" type="text" class="form-control" required>
+                </div>
+                <button name="save_button" type="submit" class="btn btn-primary mt-1" value="save">Guardar</button>
+                <button type="button" class="btn btn-info mt-1" data-toggle="collapse" data-target="#list"
+                    aria-expanded="false" aria-controls="list" value="show-list">Mostrar platos</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="row justify-content-center mt-3 collapse" id="list">
+        <div class="col-10 col-lg-5 card-title">
+            Lista de Platos
+        </div>
+        <div class="w-100"></div>
+        <div class="col-10 col-lg-5 card-body">
+            {% for item in data %}                
+                <div class="row border rounded justify-content-between align-items-center pt-2 pb-2 pr-2 mb-1">                
+                    <div class="col-auto bg-secondary text-white ml-1 pt-1 pb-1 pl-2 pr-2 rounded">
+                        {{ item[0] }}
+                    </div>
+                    <div class="col">
+                        {{ item[1] }}
+                    </div>
+                    <form method="POST">
+                        <input name="code" type="hidden" value="{{ item[0] }}">
+                        <button name="delete_button" type="submit" class="btn-danger" value="delete">Borrar</button>
+                    </form>                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

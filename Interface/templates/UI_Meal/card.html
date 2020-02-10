@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="meal-card" class="container">
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-10 col-lg-5 card-title">
+            Ficha de Comida
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10 col-lg-5 card-body">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input name="name" id="item-preview" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Selector de color</label>
+                    <label>
+                        <div class="color-picker border bg-custom-red m-1"></div>
+                        <div class="color-picker border bg-custom-orange m-1"></div>
+                        <div class="color-picker border bg-custom-aquamarina m-1"></div>
+                        <div class="color-picker border bg-custom-aqua m-1"></div>
+                        <div class="color-picker border bg-custom-softviolet m-1"></div>
+                        <div class="color-picker border bg-custom-grey m-1"></div>
+                        <div class="color-picker border bg-custom-pink m-1"></div>
+                        <div class="color-picker border bg-custom-yellow m-1"></div>
+                        <div class="color-picker border bg-custom-green m-1"></div>
+                        <div class="color-picker border bg-custom-blue m-1"></div>
+                        <div class="color-picker border bg-custom-purple m-1"></div>
+                        <div class="color-picker border bg-custom-white m-1"></div>                        
+                    </label>
+                </div>
+
+                <input name="bg-color" id="bg-color" type="hidden" value="bg-custom-white">
+
+                <button name="save_button" type="submit" class="btn btn-primary mt-1" value="save">Guardar</button>
+                <button type="button" class="btn btn-info mt-1" data-toggle="collapse" data-target="#list"
+                    aria-expanded="false" aria-controls="list" value="show-list">Mostrar Comidas</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="row justify-content-center mt-3 collapse" id="list">
+        <div class="col-10 col-lg-5 card-title">
+            Lista de Comidas
+        </div>
+        <div class="w-100"></div>
+        <div class="col-10 col-lg-5 card-body">
+            {% for item in data %}
+            {% if item[1] != 'bg-custom-white' %}
+                {% set text_white = 'text-white' %}
+            {% endif %}
+                <div
+                    class="row {{ item[1] }} {{ text_white }} border rounded justify-content-between align-items-center pt-2 pb-2 pr-2 mb-1">
+                    <div class="col">{{ item[0] }}</div>
+                    <form method="POST">
+                        <input name="name" id="name" type="hidden" value="{{ item[0] }}">
+                        <button name="delete_button" type="submit" class="btn-danger" value="delete">Borrar</button></form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

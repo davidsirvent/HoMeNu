@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="menu-card" class="container">
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-10 col-lg-5 card-title">
+            Ficha de Menú
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10 col-lg-5 card-body">
+            <form method="POST">
+                <div class="form-group">                        
+                    <label>Fecha</label>                                        
+                    <input name="date" id="date" type="date" min="2019-01-01" max="2021-12-31" class="form-control"
+                        value="{{ date['year'] }}-{{ date['month'] }}-{{ date['day'] }}">
+                </div>
+                <div class="form-group">
+                    <label>Comida</label>
+                    <select name="meal" class="form-control" id="meal-picker">
+                        <option class="bg-custom-white" disabled selected>Selecciona una comida</option>
+                        {% for item in data_meal %}
+                            {% if item[1] != 'bg-custom-white' %}                        
+                                {% set text_white = 'text-white' %}
+                            {% endif %}
+                            <option class="{{ item[1] }} {{ text_white }}" value="{{ item[1] }}">{{ item[0] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Plato</label>
+                    <select name="dish" class="form-control" id="dish-picker">                                            
+                        {% for item in data_dish %}
+                            <option value="{{ item[0] }}">{{ item[1] }}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+
+                <input name="meal-id" id="meal-id" type="hidden" value="None">
+                <button name="save_button" type="submit" class="btn btn-primary mt-1" value="save">Añadir</button>
+                <button type="button" class="btn btn-info mt-1" data-toggle="collapse" data-target="#list"
+                    aria-expanded="false" aria-controls="list" value="show-list">Ocultar Menú</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="row justify-content-center mt-3 collapse show" id="list">
+        <div class="col-10 col-lg-5 card-title">
+            Menú del dia
+        </div>
+        <div class="w-100"></div>
+        <div class="col-10 col-lg-5 card-body">            
+            {% for item in data_menu %}
+                {% if item[1] != 'bg-custom-white' %}
+                    {% set text_white = 'text-white'%}
+                {% endif %}
+                <div
+                    class="row {{ item[1] }} {{ text_white }} border rounded justify-content-between align-items-center pt-2 pb-2 pr-2 mb-1">
+                    <div class="col">{{ item[3] }}</div>
+                    <form method="POST">
+                        <input name="date" class="delete-date" type="hidden" value="">
+                        <input name="meal-id" type="hidden" value="{{ item[0] }}">
+                        <button name="delete_button" type="submit" class="btn-danger" value="{{ item[2] }}">Borrar</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

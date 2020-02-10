@@ -1,0 +1,137 @@
+/* Custom Colors */
+
+.bg-custom-red {
+    background-color: #d50000 !important;
+}
+
+.bg-custom-orange {
+    background-color: #f4511e !important;
+}
+
+.bg-custom-aquamarina {
+    background-color: #33b679 !important;
+}
+
+.bg-custom-aqua {
+    background-color: #039be5 !important;
+}
+
+.bg-custom-softviolet {
+    background-color: #7986cb !important;
+}
+
+.bg-custom-grey {
+    background-color: #616161 !important;
+}
+
+.bg-custom-pink {
+    background-color: #e67c73 !important;
+}
+
+.bg-custom-yellow {
+    background-color: #f6bf26 !important;
+}
+
+.bg-custom-green {
+    background-color: #0b8043 !important;
+}
+
+.bg-custom-blue {
+    background-color: #3f51b5 !important;
+}
+
+.bg-custom-purple {
+    background-color: #8e24aa !important;
+}
+
+.bg-custom-white {
+    background-color: #ffffff !important;
+}
+
+/* Seven Cols Bootstrap: https://gist.github.com/amilabandara/22861dab8604ce55c33c7c9aa9919d20 */
+@media (min-width: 768px) {
+    .seven-cols .col-md-1, .seven-cols .col-sm-1, .seven-cols .col-lg-1 {
+        width: 100%;
+        *width: 100%;
+        max-width: 100% !important;
+        flex: none !important;
+    }   
+}
+
+@media (min-width: 992px) {
+    .seven-cols .col-md-1, .seven-cols .col-sm-1, .seven-cols .col-lg-1 {
+        width: 13.75%;
+        *width: 13.75%;
+        max-width: 13.75% !important;
+        flex: none !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .seven-cols .col-md-1, .seven-cols .col-sm-1, .seven-cols .col-lg-1 {
+        width: 13.75%;
+        *width: 13.75%;
+        max-width: 13.75% !important;
+        flex: none !important;        
+    }
+}
+
+.seven-cols .col-md-1 {
+    min-height: 175px;
+}
+
+/* Navbar Styles */
+
+.navbar-space {
+    margin-top: 100px;
+}
+
+/* Calendar Styles */
+
+.past {
+    opacity: 0.60;
+}
+
+.day {
+    background-image: url("../img/bkg_menu.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Card Styles */
+
+.card-title {
+    /* .bg-dark */
+    background-color: #343a40 !important;
+    /* .text-white */
+    color: #fff !important;
+    /* .shadow */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    /* .pt-2 */
+    padding-top: 0.5rem !important;
+    /* .pb-2 */
+    padding-bottom: 0.5rem !important;
+    /* .font-weight-bold */
+    font-weight: 700 !important;
+    /* Adjust to card body*/
+    margin-bottom: -0.05rem !important;
+}
+
+.card-body {
+    /* .border */
+    border: 1px solid #dee2e6 !important;
+    /* .shadow */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    /* .pt-3 */
+    padding-top: 1rem !important;
+    /* .pb-3 */
+    padding-bottom: 1rem !important;
+}
+
+.color-picker {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 25px;
+    max-height: 25px;
+    display: inline-flex;
+}

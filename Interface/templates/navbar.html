@@ -1,0 +1,75 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ url_for('calendar') }}">
+        <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="HoMeNu">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('calendar') }}">Calendario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('UI_Menu.card') }}">Menús</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('UI_Meal.card') }}">Comidas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('UI_Dish.card') }}">Platos</a>
+            </li>
+        </ul>
+        <ul class="list-inline mb-n3">
+            {% if g.user is not none %}
+                <li class="text-white list-inline-item">
+                        <a class="text-reset" href="{{ url_for('UI_User.profile') }}">{{ g.user.name }}</a>
+                </li>
+                <li class="text-white list-inline-item">
+                    |
+                </li>
+                <li class="text-white list-inline-item mr-5">
+                    <a class="text-reset" href="{{ url_for('UI_User.logout') }}">Cerrar sesión</a>
+                </li>
+            {% endif %}
+
+            <li class="list-inline-item">
+                <form id="calendar-date-picker" class="d-none">
+                    <div class="form-group row">
+                        <label for="calendar-datepicker" class="col col-form-label text-white">Ir a</label>
+                        <div class="col">
+                            <input id="calendar-datepicker" type="date" min="2019-01-01" max="2021-12-31"
+                                class="form-control" value="2019-01-01">
+                        </div>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row navbar-space"></div>
+
+<!-- ERROR REPORTING -->
+<div class="row justify-content-center">
+    <div class="col-10 col-lg-5">
+        {% for msg in get_flashed_messages() %}
+        {% if 'INFO' in msg %}
+        {% set alert_type = 'alert-primary' %}
+        {% elif 'ERROR' in msg %}
+        {% set alert_type = 'alert-danger' %}
+        {% elif 'ALERTA' in msg %}
+        {% set alert_type = 'alert-warning' %}
+        {% endif %}
+
+        <div class="alert {{ alert_type }} alert-dismissible fade show mb-1" role="alert">
+            {{ msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>

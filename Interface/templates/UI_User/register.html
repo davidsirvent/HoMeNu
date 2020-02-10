@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="register" class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-10 col-lg-5 card-title">
+            Nuevo usuario
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-10 col-lg-5 card-body">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" type="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input name="username" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Clave</label>
+                    <input name="password" type="password" class="form-control" required>
+                </div>
+                <div class="form-group form-check">
+                    <input id="terms" name="terms" type="checkbox" class="form-check-input" required><label
+                        class="form-check-label" for="terms">He leído y acepto las <a href="{{ url_for('UI_User.terms') }}"
+                            target="_blank">Condiciones de uso</a> y <a href="{{ url_for('UI_User.privacy') }}" target="_blank">Política de
+                            Privacidad</a></label>
+                </div>
+                <div class="form-group form-check">
+                    <input id="pub" name="pub" type="checkbox" class="form-check-input"><label class="form-check-label"
+                        for="terms">Acepto recibir comunicados comerciales.</label>
+                </div>
+                <button name="save_button" type="submit" class="btn btn-primary mt-1" value="save">Crear cuenta</button>
+            </form>
+            <div class="border-top text-black-50 font-italic mt-5">                
+                ¿Ya eres usuario? <a class="text-reset" href="{{ url_for('UI_User.login') }}">Accede desde aquí</a>.
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

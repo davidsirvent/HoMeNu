@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="set_active" class="container">
+
+    <div class="row mt-3 justify-content-center">
+        <div class="col-auto">
+            <img src="{{ url_for('static', filename='img/set_active.png') }}" alt="Activation Success">
+        </div>
+        <div class="col-auto">
+            <h1>La cuenta ha sido activada con éxito.</h1>            
+            <p>Puede acceder a través de la página de <a href="{{ url_for('UI_User.login') }}" class="badge badge-primary">LOGIN</a></p>            
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

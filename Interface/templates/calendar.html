@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="calendar" class="container">
+
+    <!-- CALENDAR -->
+    <div class="row mt-2 seven-cols">
+
+        {% for item in cal %}
+                    
+            {# This block shows a banner at the beginning of each month #}
+            {% set show_month = true %}
+            
+            {% if item['date'][0:(item['date']|length) - 2] == '01-01-20' %}        
+                {% set month_text = 'Enero'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-02-20' %}
+                {% set month_text = 'Febrero'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-03-20' %}
+                {% set month_text = 'Marzo'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-04-20' %}
+                {% set month_text = 'Abril'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-05-20' %}
+                {% set month_text = 'Mayo'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-06-20' %}
+                {% set month_text = 'Junio'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-07-20' %}
+                {% set month_text = 'Julio'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-08-20' %}
+                {% set month_text = 'Agosto'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-09-20' %}
+                {% set month_text = 'Septiembre'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-10-20' %}
+                {% set month_text = 'Octubre'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-11-20' %}
+                {% set month_text = 'Noviembre'%}                
+            {% elif item['date'][0:(item['date']|length) - 2] == '01-12-20' %}
+                {% set month_text = 'Diciembre'%}                            
+            {% else %}
+                {% set show_month = false %}
+            {% endif %}            
+
+            {% if show_month == true %}
+
+                {% if item['weekday'] != 0 %}
+                    {% for i in range(7 - item['weekday']) %}
+                        <div class="col-md-1 ml-auto mr-auto mt-3 mt-lg-1 mb-3 d-none d-sm-block">  
+                            {# Empty #}                 
+                        </div>
+                    {% endfor %}
+                         <div class="w-100 shadow bg-dark text-white pb-3 pt-3 mt-3 mb-1 text-center">{{ month_text }}</div>                                        
+                    {% for i in range(item['weekday']) %}
+                        <div class="col-md-1 ml-auto mr-auto mt-3 mt-lg-1 mb-3 d-none d-sm-block">
+                            {# Empty #}                 
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="w-100 shadow bg-dark text-white pb-3 pt-3 mt-3 mb-1 text-center">{{ month_text }}</div>                    
+                {% endif %}
+                
+            {% endif %}
+            
+            {# This block shows each day #}
+            <div class="day col-md-1 col-10 ml-auto mr-auto border border-black-75 rounded-bottom shadow mt-3 mt-lg-1 mb-3 {{ item['opacity'] }}">
+                <div class="row">                                                                                
+                    <div id="{{ item['today'] }}" class="col bg-dark text-white pb-1 pt-1 mb-1 text-center day-tag">{{ item['date'] }}</div>
+                    <div class="w-100"></div>
+                    {% for menu_item in item['menu'] %}
+                        {% if menu_item['bg_color'] != 'bg-custom-white' %}                 
+                            {% set text_white = 'text-white' %}
+                        {% endif %}
+                        <div class="col {{menu_item['bg_color']}} {{ text_white }} rounded pt-1 pb-1 mb-1">{{menu_item['dish']}}</div>
+                        <div class="w-100"></div>      
+                    {% endfor %}
+                </div>
+            </div>            
+            
+        {% endfor%}
+    </div>
+
+</div>
+
+{% endblock %}
