@@ -12,8 +12,7 @@ Once you have registered as a user you can:
 
 It is developed using the **following technology**:
 * Python for business logic.
-* Flask for the logic of the web interface.
-* Bootstrap + JQuery for the interface itself.
+* Flask + Bootstrap + JQuery for the interface.
 * SQLite for the database.
 
 There is a **_DEMO version_** that can be accessed with the following data:
