@@ -1,7 +1,7 @@
 # HoMeNu
 ### Home Menu
 
-![Calendar pic](https://cloudinary-a.akamaihd.net/hopwork/image/upload/w_1024,c_limit,dpr_2/nopvjgootmykearifn4f.jpg)
+![Calendar pic](https://repository-images.githubusercontent.com/223041062/83848a80-4c69-11ea-8c52-0a925cc8b967)
 
 HoMeNu is a personal project aimed at managing the daily menu in an ordinary house.
 Once you have registered as a user you can:
